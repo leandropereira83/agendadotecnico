@@ -13,7 +13,8 @@ import { environment } from './core/environments/environment';
 export class App {
 
   constructor() {
-    alert(`Ambiente: ${environment.ambiente}`);
+    //alert(`Ambiente: ${environment.ambiente}`);
+    console.log(`Ambiente: ${environment.ambiente}`);
   }
 
   readonly menus: Array<PoMenuItem> = [{ label: 'Home', action: this.onClick.bind(this) }];

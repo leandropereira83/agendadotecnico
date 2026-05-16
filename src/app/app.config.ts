@@ -8,6 +8,7 @@ import {
   provideBrowserGlobalErrorListeners,
   provideZoneChangeDetection,
   isDevMode,
+  provideAppInitializer,
 } from '@angular/core';
 import { provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
 
@@ -17,6 +18,9 @@ import { authInterceptor } from './core/interceptors/auth-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideAppInitializer(
+      () => init()
+    ),
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     importProvidersFrom([PoHttpRequestModule]),
@@ -31,3 +35,8 @@ export const appConfig: ApplicationConfig = {
     }),
   ],
 };
+
+const init = () => {
+  console.log('Inicialização do app');
+};
+
