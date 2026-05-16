@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 import { PoMenuItem, PoMenuModule, PoPageModule, PoToolbarModule } from '@po-ui/ng-components';
+import { environment } from './core/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,11 @@ import { PoMenuItem, PoMenuModule, PoPageModule, PoToolbarModule } from '@po-ui/
   styleUrls: ['./app.css'],
 })
 export class App {
+
+  constructor() {
+    alert(`Ambiente: ${environment.ambiente}`);
+  }
+
   readonly menus: Array<PoMenuItem> = [{ label: 'Home', action: this.onClick.bind(this) }];
 
   private onClick() {
