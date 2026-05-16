@@ -15,4 +15,6 @@ export const routes: Routes = [
             { path: 'notificacoes', loadComponent: () => import('./pages/master/notificacoes/notificacoes').then(m => m.Notificacoes) },
         ]
     },
+    { path: 'error', loadComponent: () => import('./pages/error/error').then(m => m.Error) },
+    { path: '**', redirectTo: 'error' }
 ];
