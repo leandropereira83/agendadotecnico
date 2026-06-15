@@ -9,12 +9,17 @@ import {
   provideZoneChangeDetection,
   isDevMode,
   provideAppInitializer,
+  inject,
 } from '@angular/core';
 import { provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
 
 import { PoHttpRequestModule } from '@po-ui/ng-components';
 import { provideServiceWorker } from '@angular/service-worker';
 import { authInterceptor } from './core/interceptors/auth-interceptor';
+import { StorageService } from './core/services/storage-service';
+import { Section } from './core/models/section';
+import { environment } from './core/environments/environment';
+import { AuthService } from './core/services/auth-service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -36,7 +41,13 @@ export const appConfig: ApplicationConfig = {
   ],
 };
 
-const init = () => {
-  console.log('Inicialização do app');
+const init = async () => {
+  const storageService = inject(StorageService);
+  const authService = inject(AuthService);
+  const section: Section = await storageService.getItem(environment.STORAGE_KEY_SECTION) ?? new Section;
+
+  console.log('Section offline', section);
+
+  authService.setSection(section);
 };
 

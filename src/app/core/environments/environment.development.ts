@@ -4,4 +4,5 @@ export const environment = {
     url_base: 'https://erp:2200/api/',
     STORAGE_NAME: 'agenda-do-tecnico',
     STORAGE_STORE_NAME: 'agenda-do-tecnico-store',
+    STORAGE_KEY_SECTION: 'section',
 };
