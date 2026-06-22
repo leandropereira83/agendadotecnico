@@ -46,7 +46,7 @@ const init = async () => {
   const authService = inject(AuthService);
   const section: Section = await storageService.getItem(environment.STORAGE_KEY_SECTION) ?? new Section;
 
-  console.log('Section offline', section);
+  //console.log('Section offline', section);
 
   authService.setSection(section);
 };
